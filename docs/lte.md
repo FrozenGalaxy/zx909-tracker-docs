@@ -15,12 +15,20 @@ the Qualcomm stick was moved into the tracker. The tracker reported the SIM as
 ready, but its automatic scan listed only PLMN `26201` (Telekom), not O2
 `26203`; it had no packet attach. A temporary B3/EARFCN 1600 lock was accepted,
 but the operator scan timed out without a response. Manual O2 selection returned
-an error. Automatic selection was restored; the tracker then remained without
-signal/operator service during the captured follow-up. This strongly reduces
-the likelihood of a SIM-card fault. It does not identify whether the remaining
-cause is RF/front-end sensitivity, modem firmware/configuration, calibration,
-or network/device policy. The reference stick's successful run and tracker test
-were sequential, not simultaneous.
+an error. Automatic selection was restored. A later reset recovered signal and
+the tracker returned to PLMN `26201`, still denied service and without packet
+attach. This strongly reduces the likelihood of a SIM-card fault. It does not
+identify whether the remaining cause is RF/front-end sensitivity, modem
+firmware/configuration, calibration, or network/device policy. The reference
+stick's successful run and tracker test were sequential, not simultaneous.
+
+Afterward, the tracker began repeatedly cycling between its normal firmware USB
+identity and the AROM boot-port identity, roughly every five seconds. Both USB
+modes enumerated successfully; the host log did not show USB enable errors. A
+brief attempt to disable the radio through AT received no response, so whether
+the command took effect is unknown. No flash write occurred during this test.
+The pattern is consistent with a device reset/watchdog or power instability,
+but the available logs do not distinguish firmware from hardware causes.
 
 ## Tracker results
 
