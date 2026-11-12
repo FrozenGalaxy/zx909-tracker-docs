@@ -9,17 +9,27 @@ reference modem registered and attached successfully on O2. Exact cell IDs,
 TAC, PCI, and coordinates are omitted from this public record.
 
 This confirms that O2 service was available to those devices at the test time.
-The SIMs and radios were different, so it does not rule out tracker-SIM policy
-or device compatibility issues.
+
+In a later controlled comparison, the same physical SIM that had registered in
+the Qualcomm stick was moved into the tracker. The tracker reported the SIM as
+ready, but its automatic scan listed only PLMN `26201` (Telekom), not O2
+`26203`; it had no packet attach. A temporary B3/EARFCN 1600 lock was accepted,
+but the operator scan timed out without a response. Manual O2 selection returned
+an error. Automatic selection was restored; the tracker then remained without
+signal/operator service during the captured follow-up. This strongly reduces
+the likelihood of a SIM-card fault. It does not identify whether the remaining
+cause is RF/front-end sensitivity, modem firmware/configuration, calibration,
+or network/device policy. The reference stick's successful run and tracker test
+were sequential, not simultaneous.
 
 ## Tracker results
 
 The tracker has previously worked on LTE with its original firmware according
 to the owner. After a full original-image restore, it booted normally, reported
 `CSQ 16`, and showed LTE signal, but did not register normally on O2 or attach
-for data. Manual tests on locally covered bands 1 and 3 could see O2 in limited
-service, but did not establish packet attachment. Reported RSRP was weaker than
-the reference modem; the tracker uses a small integrated PCB antenna.
+for data. Earlier manual tests on locally covered bands 1 and 3 could see O2 in
+limited service, but did not establish packet attachment. Reported RSRP was
+weaker than the reference modem; the tracker uses a small integrated PCB antenna.
 
 ## Current conclusion
 
